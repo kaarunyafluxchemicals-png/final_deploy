@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaarunya Flux Chemicals — Engineered Chemistry for Manufacturing</title>
+  <meta name="description" content="Specialized flux, cleaning and dross-management chemistry for PCB, PCBA, SMT and electronics manufacturing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg-soft:#f6f7f8;
+      --panel:#ffffff;
+      --panel-2:#f0f2f4;
+      --line:#e1e4e8;
+      --line-soft:#ebedf0;
+      --ink:#161a1f;
+      --ink-dim:#57626d;
+      --ink-faint:#8a94a0;
+      --copper:#b85f19;
+      --copper-bright:#9c4e12;
+      --copper-tint:#f4e3d0;
+      --copper-dim:#c68a4a;
+      --copper-line:#d99a55;
+      --cyan:#0f8a75;
+      --cyan-dim:#dcf3ee;
+      --radius:3px;
+      --maxw:1240px;
+      --ease:cubic-bezier(.22,.8,.28,1);
+      --shadow-sm:0 1px 2px rgba(20,24,29,.05);
+      --shadow-md:0 12px 30px -18px rgba(20,24,29,.22);
+    }
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto;}
+      *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+    }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:'Inter',system-ui,sans-serif;
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    img,svg{display:block; max-width:100%;}
+    a{color:inherit;}
+    ul{margin:0; padding:0; list-style:none;}
+    h1,h2,h3,h4{margin:0; font-family:'Big Shoulders Display',sans-serif; font-weight:800; letter-spacing:.01em; line-height:1.02;}
+    p{margin:0;}
+    button{font-family:inherit; cursor:pointer;}
+    :focus-visible{outline:2px solid var(--copper-bright); outline-offset:3px;}
+
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+    @media (max-width:720px){.wrap{padding:0 20px;}}
+
+    .eyebrow{
+      font-family:'IBM Plex Mono',monospace;
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--copper);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:16px;
+    }
+    .eyebrow::before{content:""; width:22px; height:1px; background:var(--copper);}
+
+    section{padding:96px 0; border-bottom:1px solid var(--line-soft);}
+    @media (max-width:720px){section{padding:64px 0;}}
+    .section-head{max-width:640px; margin-bottom:56px;}
+    .section-head h2{font-size:clamp(30px,4.4vw,48px); text-transform:uppercase;}
+    .section-head .lede{color:var(--ink-dim); font-size:17px; margin-top:16px; max-width:56ch;}
+
+    .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
+    .reveal.in{opacity:1; transform:translateY(0);}
+
+    /* ---------- NAV ---------- */
+    header.site{
+      position:sticky; top:0; z-index:200;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:24px;}
+    .brand{display:flex; align-items:center; gap:10px; font-family:'Big Shoulders Display'; font-weight:800; font-size:20px; letter-spacing:.02em; text-transform:uppercase; text-decoration:none;}
+    .brand-mark{width:28px; height:28px; flex:none;}
+    .brand small{display:block; font-family:'IBM Plex Mono'; font-size:9.5px; letter-spacing:.14em; color:var(--ink-faint); font-weight:400; text-transform:uppercase;}
+    nav.links{display:flex; gap:4px; font-size:13.5px;}
+    nav.links a{
+      text-decoration:none; color:var(--ink-dim); transition:color .2s, background .2s;
+      padding:8px 12px; border-radius:var(--radius); position:relative; font-weight:500;
+    }
+    nav.links a:hover{color:var(--ink); background:var(--panel-2);}
+    nav.links a.active{color:var(--copper-bright);}
+    nav.links a.active::after{
+      content:""; position:absolute; left:12px; right:12px; bottom:1px; height:2px; background:var(--copper);
+      border-radius:2px;
+    }
+    .nav-cta{display:flex; align-items:center; gap:14px; flex:none;}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:11px 20px; border-radius:var(--radius);
+      font-size:13.5px; font-weight:600; text-decoration:none;
+      border:1px solid transparent; transition:transform .18s var(--ease), background .2s, border-color .2s;
+      white-space:nowrap;
+    }
+    .btn-copper{background:var(--copper); color:#fffaf5;}
+    .btn-copper:hover{background:var(--copper-bright); transform:translateY(-1px);}
+    .btn-ghost{border-color:var(--line); color:var(--ink); background:transparent;}
+    .btn-ghost:hover{border-color:var(--copper); color:var(--copper-bright);}
+    .btn-sm{padding:8px 14px; font-size:12.5px;}
+
+    .menu-toggle{
+      display:none; flex-direction:column; justify-content:center; gap:4px;
+      background:none; border:1px solid var(--line); color:var(--ink); width:38px; height:38px;
+      border-radius:var(--radius); flex:none;
+    }
+    .menu-toggle span{display:block; width:16px; height:1.5px; background:var(--ink); margin:0 auto; transition:transform .25s var(--ease), opacity .2s;}
+    .menu-toggle.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+    .menu-toggle.open span:nth-child(2){opacity:0;}
+    .menu-toggle.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+
+    .mobile-panel{
+      display:none; flex-direction:column; gap:2px;
+      max-height:0; overflow:hidden; border-top:1px solid var(--line-soft);
+      transition:max-height .35s var(--ease);
+    }
+    .mobile-panel a{
+      text-decoration:none; color:var(--ink-dim); font-size:15px; font-weight:500; padding:14px 4px;
+      border-bottom:1px solid var(--line-soft);
+    }
+    .mobile-panel a.active{color:var(--copper-bright);}
+    .mobile-panel .btn{margin-top:14px;}
+
+    @media (max-width:900px){
+      nav.links{display:none;}
+      .nav-cta .btn-ghost{display:none;}
+      .menu-toggle{display:flex;}
+      .mobile-panel{display:flex;}
+    }
+
+    /* ---------- SELF NAV (scrollspy rail) ---------- */
+    .scrollspy{
+      position:fixed; right:26px; top:50%; transform:translateY(-50%); z-index:150;
+      display:flex; flex-direction:column; gap:14px;
+      background:rgba(255,255,255,.9); backdrop-filter:blur(8px);
+      border:1px solid var(--line); border-radius:20px; padding:16px 8px;
+      box-shadow:var(--shadow-md);
+    }
+    .scrollspy a{
+      position:relative; width:9px; height:9px; border-radius:50%; background:var(--line);
+      border:1px solid transparent; transition:background .25s, transform .25s; display:block;
+    }
+    .scrollspy a:hover{background:var(--copper-dim); transform:scale(1.2);}
+    .scrollspy a.active{background:var(--copper); transform:scale(1.3);}
+    .scrollspy a .ss-label{
+      position:absolute; right:22px; top:50%; transform:translateY(-50%);
+      background:var(--ink); color:#fff; font-size:11.5px; font-weight:600; letter-spacing:.02em;
+      padding:6px 10px; border-radius:4px; white-space:nowrap;
+      opacity:0; pointer-events:none; transition:opacity .18s, transform .18s;
+    }
+    .scrollspy a:hover .ss-label, .scrollspy a.active .ss-label{opacity:1; transform:translateY(-50%) translateX(-2px);}
+    .scrollspy a.active .ss-label{opacity:0;}
+    .scrollspy a:hover .ss-label{opacity:1;}
+    @media (max-width:1180px){.scrollspy{display:none;}}
+
+    /* ---------- HERO ---------- */
+    .hero{
+      padding:88px 0 90px;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid var(--line-soft);
+      background:
+        radial-gradient(ellipse 900px 500px at 82% -10%, rgba(217,129,46,.12), transparent 60%),
+        radial-gradient(ellipse 700px 400px at 0% 100%, rgba(79,224,199,.06), transparent 60%);
+    }
+    /* ---------- BACKGROUND IMAGE (full page subtle) ---------- */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.02"><path d="M10 10 L90 10 L90 90 L10 90 Z" fill="none" stroke="%23b85f19" stroke-width="0.2"/><circle cx="30" cy="30" r="4" fill="%23b85f19" opacity="0.15"/><circle cx="70" cy="60" r="6" fill="%230f8a75" opacity="0.1"/><circle cx="20" cy="80" r="3" fill="%23b85f19" opacity="0.1"/><path d="M40 20 L60 20 L60 40 L40 40 Z" fill="none" stroke="%230f8a75" stroke-width="0.3" opacity="0.2"/><path d="M70 80 L85 80 L85 95 L70 95 Z" fill="none" stroke="%23b85f19" stroke-width="0.3" opacity="0.15"/></svg>');
+      background-repeat: repeat;
+      background-size: 180px 180px;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+    @media (max-width:980px){.hero-grid{grid-template-columns:1fr; gap:48px;}}
+    .hero h1{font-size:clamp(40px,5.6vw,68px); text-transform:uppercase; margin-bottom:22px;}
+    .hero h1 em{font-style:normal; color:var(--copper);}
+    .hero .lede{font-size:18px; color:var(--ink-dim); max-width:52ch; margin-bottom:32px;}
+    .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;}
+    .hero-tags{display:flex; gap:10px; flex-wrap:wrap;}
+    .tag{
+      font-family:'IBM Plex Mono'; font-size:11.5px; letter-spacing:.05em;
+      padding:6px 10px; border:1px solid var(--line); border-radius:var(--radius); color:var(--ink-faint);
+    }
+
+    /* hero schematic */
+    .schematic{
+      background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:26px 22px 20px;
+    }
+    .schematic-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;}
+    .schematic-top .label{font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);}
+    .schematic-top .value{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--copper-bright); transition:color .3s;}
+    .schem-svg-holder{border:1px solid var(--line-soft); border-radius:4px; background:
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%), var(--bg-soft);
+      padding:10px;}
+    .hero-toggle{display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;}
+    .htbtn{
+      flex:1; min-width:120px; text-align:left;
+      background:var(--panel-2); border:1px solid var(--line); color:var(--ink-dim);
+      padding:10px 12px; border-radius:var(--radius); font-size:12px; font-family:'IBM Plex Mono';
+      transition:all .2s;
+    }
+    .htbtn strong{display:block; font-family:'Inter'; font-size:13px; color:var(--ink); font-weight:600; margin-bottom:2px;}
+    .htbtn.active{border-color:var(--copper); background:rgba(217,129,46,.1); color:var(--copper-bright);}
+    .htbtn.active strong{color:var(--ink);}
+    .htbtn:hover{border-color:var(--ink-faint);}
+
+    .flow-line{stroke-dasharray:6 5; animation:dash 1.6s linear infinite;}
+    @keyframes dash{to{stroke-dashoffset:-44;}}
+    .fillet{transition:fill 1.6s var(--ease), d .3s;}
+    .wet-sweep{animation:sweep 2.4s var(--ease) infinite;}
+    @keyframes sweep{0%{opacity:0; transform:translateX(-14px);}30%{opacity:1;}100%{opacity:0; transform:translateX(14px);}}
+
+    /* ---------- INTRO / WHO WE ARE ---------- */
+    .intro-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:64px;}
+    @media (max-width:900px){.intro-grid{grid-template-columns:1fr; gap:40px;}}
+    .intro-grid .lede{font-size:19px; color:var(--ink); max-width:44ch;}
+    .req-list{display:grid; grid-template-columns:1fr 1fr; gap:0;}
+    .req-list li{
+      display:flex; align-items:center; gap:10px; padding:13px 0; border-bottom:1px solid var(--line-soft);
+      font-size:14.5px; color:var(--ink-dim);
+    }
+    .req-list li::before{content:""; width:6px; height:6px; background:var(--copper); flex:none; transform:rotate(45deg);}
+
+    .about-fact-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:22px;}
+    .about-fact{border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; background:var(--bg-soft);}
+    .about-fact .af-label{font-family:'IBM Plex Mono'; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:4px;}
+    .about-fact .af-value{font-size:13.5px; color:var(--ink); font-weight:600; line-height:1.4;}
+    .sector-chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+    .sector-chip-row .tag{color:var(--ink-dim);}
+
+    /* ---------- APPROACH ---------- */
+    .approach-list{display:flex; flex-direction:column;}
+    .approach-item{
+      display:grid; grid-template-columns:90px 1fr; gap:28px; padding:28px 0; border-top:1px solid var(--line-soft);
+      align-items:start;
+    }
+    .approach-item:last-child{border-bottom:1px solid var(--line-soft);}
+    .approach-num{font-family:'Big Shoulders Display'; font-weight:900; font-size:44px; color:var(--copper-dim); transition:color .3s;}
+    .approach-item.in .approach-num{color:var(--copper);}
+    .approach-body h3{font-family:'Inter'; font-size:19px; font-weight:700; text-transform:uppercase; letter-spacing:.02em; margin-bottom:6px;}
+    .approach-body p{color:var(--ink-dim); font-size:15px; max-width:60ch;}
+
+    /* ---------- PRODUCT FINDER ---------- */
+    .finder-panel{
+      background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:32px;
+    }
+    .finder-q{font-size:15px; color:var(--ink-dim); margin-bottom:18px;}
+    .finder-chips{display:flex; flex-wrap:wrap; gap:10px;}
+    .chip{
+      background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
+      padding:11px 16px; border-radius:20px; font-size:13.5px; font-weight:500;
+      transition:all .2s;
+    }
+    .chip:hover{border-color:var(--copper); color:var(--copper-bright);}
+    .chip.active{background:var(--copper); border-color:var(--copper); color:#171008;}
+
+    /* ---------- PRODUCTS ---------- */
+    .filter-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px;}
+    .filter-btn{
+      background:transparent; border:1px solid var(--line); color:var(--ink-dim);
+      padding:8px 14px; border-radius:var(--radius); font-size:12.5px; font-family:'IBM Plex Mono'; letter-spacing:.03em;
+      transition:all .2s;
+    }
+    .filter-btn:hover{color:var(--ink);}
+    .filter-btn.active{background:var(--ink); color:var(--bg); border-color:var(--ink);}
+    .product-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+    @media (max-width:980px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+    @media (max-width:640px){.product-grid{grid-template-columns:1fr;}}
+    .p-card{
+      background:var(--panel); border:1px solid var(--line); border-radius:5px; padding:24px;
+      transition:transform .25s var(--ease), border-color .25s, box-shadow .25s;
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .p-card.hidden{display:none;}
+    .p-card:hover{transform:translateY(-4px); border-color:var(--copper-dim); box-shadow:0 18px 40px -20px rgba(20,24,29,.18);}
+    .p-card.flash{border-color:var(--copper); box-shadow:0 0 0 3px rgba(217,129,46,.18);}
+    .p-cat{font-family:'IBM Plex Mono'; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--cyan);}
+    .p-name{font-family:'Big Shoulders Display'; font-size:24px; font-weight:800; text-transform:uppercase;}
+    .p-desc{color:var(--ink-dim); font-size:14px; flex:1;}
+    .p-foot{display:flex; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px solid var(--line-soft);}
+    .p-code{font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink-faint);}
+    .p-img{ width:100%; height:auto; border-radius:4px; background:var(--bg-soft); margin-bottom:8px; object-fit:cover; border:1px solid var(--line-soft);}
+
+    /* ---------- APPLICATIONS PROCESS ---------- */
+    .process{position:relative;}
+    .process-track{
+      display:grid; grid-template-columns:repeat(6,1fr); gap:0; position:relative; margin-top:8px;
+    }
+    @media (max-width:900px){.process-track{grid-template-columns:1fr; gap:0;}}
+    .process-line-bg{
+      position:absolute; top:23px; left:0; right:0; height:2px; background:var(--line);
+    }
+    @media (max-width:900px){.process-line-bg{top:0; bottom:0; left:23px; right:auto; width:2px; height:auto;}}
+    .process-line-fg{
+      position:absolute; top:23px; left:0; height:2px; width:0%; background:linear-gradient(90deg,var(--copper),var(--cyan));
+      transition:width .5s var(--ease);
+    }
+    @media (max-width:900px){.process-line-fg{top:0; left:23px; width:2px; height:0%;}}
+    .p-step{position:relative; padding:0 16px 0 0; text-align:left;}
+    @media (max-width:900px){.p-step{padding:0 0 40px 56px; min-height:10px;}}
+    .p-dot{
+      width:14px; height:14px; border-radius:50%; background:var(--bg); border:2px solid var(--line);
+      margin-bottom:20px; position:relative; z-index:2; transition:all .4s var(--ease);
+    }
+    @media (max-width:900px){.p-dot{position:absolute; left:16px; top:0; margin:0;}}
+    .p-step.active .p-dot{border-color:var(--copper); background:var(--copper); box-shadow:0 0 0 5px rgba(217,129,46,.16);}
+    .p-step h4{font-family:'Inter'; font-weight:700; font-size:13.5px; text-transform:uppercase; letter-spacing:.03em; margin-bottom:6px; color:var(--ink-faint); transition:color .4s;}
+    .p-step.active h4{color:var(--ink);}
+    .p-step p{font-size:13px; color:var(--ink-faint); max-width:32ch; transition:color .4s;}
+    .p-step.active p{color:var(--ink-dim);}
+
+    /* ---------- INDUSTRIES ---------- */
+    .industry-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);}
+    @media (max-width:900px){.industry-grid{grid-template-columns:repeat(2,1fr);}}
+    .industry-cell{background:var(--bg); padding:28px 22px; transition:background .25s;}
+    .industry-cell:hover{background:var(--panel);}
+    .industry-cell .ic-num{font-family:'IBM Plex Mono'; font-size:11px; color:var(--copper-dim);}
+    .industry-cell h4{font-family:'Inter'; font-weight:700; font-size:15.5px; margin:10px 0 6px;}
+    .industry-cell p{font-size:12.5px; color:var(--ink-faint); line-height:1.5;}
+
+    /* ---------- COMPARISON TABLE ---------- */
+    .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:5px;}
+    table{width:100%; border-collapse:collapse; min-width:680px; font-size:14px;}
+    thead th{
+      text-align:left; padding:14px 18px; background:var(--panel-2); font-family:'IBM Plex Mono'; font-size:11px;
+      letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); border-bottom:1px solid var(--line);
+      cursor:pointer; user-select:none; white-space:nowrap;
+    }
+    thead th:hover{color:var(--copper-bright);}
+    thead th .arrow{opacity:.4; font-size:10px; margin-left:5px;}
+    tbody td{padding:14px 18px; border-bottom:1px solid var(--line-soft); color:var(--ink-dim);}
+    tbody tr:last-child td{border-bottom:none;}
+    tbody tr:hover{background:rgba(20,24,29,.03);}
+    tbody td:first-child{color:var(--ink); font-weight:600;}
+
+    /* ---------- QUALITY / WHY ---------- */
+    .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+    @media (max-width:900px){.why-grid{grid-template-columns:1fr 1fr;}}
+    @media (max-width:560px){.why-grid{grid-template-columns:1fr;}}
+    .why-cell{background:var(--bg-soft); padding:30px 24px;}
+    .why-cell h4{font-family:'Inter'; font-weight:700; font-size:14.5px; text-transform:uppercase; letter-spacing:.03em; margin-bottom:10px; color:var(--copper);}
+    .why-cell p{font-size:13.5px; color:var(--ink-faint); line-height:1.55;}
+
+    /* ---------- ENQUIRY FORM ---------- */
+    .enquiry-shell{background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden;}
+    .enquiry-steps-bar{display:flex; border-bottom:1px solid var(--line);}
+    .esb-item{flex:1; padding:16px 18px; font-family:'IBM Plex Mono'; font-size:11.5px; letter-spacing:.04em; color:var(--ink-faint); border-right:1px solid var(--line); position:relative;}
+    .esb-item:last-child{border-right:none;}
+    .esb-item span{display:block; font-family:'Inter'; font-size:14px; color:var(--ink-faint); margin-top:4px; font-weight:600;}
+    .esb-item.active{color:var(--copper);}
+    .esb-item.active span{color:var(--ink);}
+    .esb-item.done{color:var(--cyan);}
+    @media (max-width:760px){.esb-item span{display:none;} .esb-item{padding:12px 8px; font-size:10px; text-align:center;}}
+    .enquiry-body{padding:36px 34px;}
+    @media (max-width:640px){.enquiry-body{padding:26px 20px;}}
+    .ef-step{display:none;}
+    .ef-step.active{display:block; animation:fadeIn .4s var(--ease);}
+    @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+    .field-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+    @media (max-width:640px){.field-grid{grid-template-columns:1fr;}}
+    .field{display:flex; flex-direction:column; gap:7px; margin-bottom:18px;}
+    .field label{font-size:12.5px; color:var(--ink-dim); font-weight:500;}
+    .field input, .field textarea, .field select{
+      background:var(--bg-soft); border:1px solid var(--line); color:var(--ink); padding:11px 13px;
+      border-radius:var(--radius); font-family:'Inter'; font-size:14px; transition:border-color .2s;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus{border-color:var(--copper); outline:none;}
+    .field textarea{resize:vertical; min-height:80px;}
+    .pick-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+    @media (max-width:640px){.pick-grid{grid-template-columns:repeat(2,1fr);}}
+    .pick{
+      border:1px solid var(--line); background:var(--bg-soft); color:var(--ink-dim); padding:14px 12px;
+      border-radius:var(--radius); font-size:13px; text-align:left; transition:all .2s;
+    }
+    .pick.selected{border-color:var(--copper); background:rgba(217,129,46,.1); color:var(--ink);}
+    .ef-nav{display:flex; justify-content:space-between; margin-top:28px; gap:12px;}
+    .req-note{font-size:12px; color:var(--ink-faint); margin-top:6px;}
+    .confirm-panel{text-align:center; padding:26px 0;}
+    .confirm-mark{width:52px; height:52px; border-radius:50%; background:rgba(79,224,199,.12); border:1px solid var(--cyan-dim); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; color:var(--cyan); font-size:22px;}
+    .confirm-summary{text-align:left; background:var(--bg-soft); border:1px solid var(--line-soft); border-radius:var(--radius); padding:16px 18px; margin-top:22px; font-size:13px; color:var(--ink-dim); font-family:'IBM Plex Mono';}
+    .confirm-summary div{padding:4px 0;}
+    .confirm-summary b{color:var(--ink); font-family:'Inter';}
+
+    /* ---------- FAQ ---------- */
+    .faq-item{border-bottom:1px solid var(--line-soft);}
+    .faq-q{
+      width:100%; background:none; border:none; color:var(--ink); text-align:left; padding:22px 0;
+      display:flex; justify-content:space-between; align-items:center; gap:20px; font-size:16px; font-weight:600;
+    }
+    .faq-q .plus{font-family:'IBM Plex Mono'; color:var(--copper); font-size:18px; transition:transform .3s; flex:none;}
+    .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+    .faq-a{max-height:0; overflow:hidden; transition:max-height .35s var(--ease);}
+    .faq-a p{color:var(--ink-dim); font-size:14.5px; padding-bottom:22px; max-width:64ch;}
+
+    /* ---------- RESOURCES ---------- */
+    .res-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
+    @media (max-width:980px){.res-grid{grid-template-columns:repeat(3,1fr);}}
+    @media (max-width:640px){.res-grid{grid-template-columns:repeat(2,1fr);}}
+    .res-card{border:1px solid var(--line); border-radius:5px; padding:20px 16px; text-align:left; background:var(--panel); transition:border-color .2s;}
+    .res-card:hover{border-color:var(--copper-dim);}
+    .res-card .r-ic{font-family:'IBM Plex Mono'; font-size:11px; color:var(--cyan); margin-bottom:14px;}
+    .res-card h4{font-family:'Inter'; font-size:13.5px; font-weight:700; margin-bottom:6px;}
+    .res-card p{font-size:11.5px; color:var(--ink-faint);}
+
+    /* ---------- CONTACT CTA ---------- */
+    .cta-band{
+      background:linear-gradient(120deg, var(--panel) 0%, var(--bg-soft) 100%);
+      border:1px solid var(--line); border-radius:6px; padding:56px; display:flex; justify-content:space-between; align-items:center; gap:40px;
+    }
+    @media (max-width:800px){.cta-band{flex-direction:column; align-items:flex-start; padding:36px 26px;}}
+    .cta-band h2{font-size:clamp(26px,4vw,38px); text-transform:uppercase; max-width:14ch;}
+    .cta-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+    /* ---------- FOOTER ---------- */
+    footer{padding:64px 0 40px;}
+    .foot-grid{display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:32px; padding-bottom:48px; border-bottom:1px solid var(--line-soft);}
+    @media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr; row-gap:36px;}}
+    .foot-brand p{color:var(--ink-faint); font-size:13px; margin-top:14px; max-width:32ch;}
+    .foot-col h5{font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px;}
+    .foot-col ul li{margin-bottom:10px; font-size:13.5px; color:var(--ink-dim);}
+    .foot-col.contact li{color:var(--ink-faint); font-style:normal;}
+    .foot-bottom{display:flex; justify-content:space-between; padding-top:26px; font-size:12px; color:var(--ink-faint); flex-wrap:wrap; gap:10px;}
+    .gstin-badge{
+      font-family:'IBM Plex Mono',monospace;
+      font-size:11px;
+      letter-spacing:.05em;
+      background:var(--bg-soft);
+      border:1px solid var(--line);
+      padding:4px 12px;
+      border-radius:var(--radius);
+      color:var(--ink-dim);
+      display:inline-block;
+    }
+  </style>
+</head>
+<body>
+<!-- background image is applied via CSS ::before -->
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#home" class="brand">
+      <img src="images/logo.png" alt="Kaarunya Flux Chemicals Logo" style="height:36px; width:auto; flex:none;">
+      Kaarunya Flux<small>Chemicals</small>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#who" data-nav="who">Company</a>
+      <a href="#products" data-nav="products">Products</a>
+      <a href="#applications" data-nav="applications">Applications</a>
+      <a href="#industries" data-nav="industries">Industries</a>
+      <a href="#compare" data-nav="compare">Compare</a>
+      <a href="#faq" data-nav="faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#enquiry" class="btn btn-ghost">Talk to Our Team</a>
+      <a href="#finder" class="btn btn-copper">Find a Solution</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-panel wrap" id="mobilePanel">
+    <a href="#home" data-nav="home">Home</a>
+    <a href="#who" data-nav="who">Company</a>
+    <a href="#products" data-nav="products">Products</a>
+    <a href="#applications" data-nav="applications">Applications</a>
+    <a href="#industries" data-nav="industries">Industries</a>
+    <a href="#compare" data-nav="compare">Compare</a>
+    <a href="#faq" data-nav="faq">FAQ</a>
+    <a href="#enquiry" class="btn btn-copper">Talk to Our Team</a>
+  </div>
+</header>
+
+<!-- ================= SELF NAVIGATION (scrollspy) ================= -->
+<nav class="scrollspy" id="scrollspy" aria-label="Section navigation">
+  <a href="#home" data-nav="home"><span class="ss-label">Home</span></a>
+  <a href="#who" data-nav="who"><span class="ss-label">Company</span></a>
+  <a href="#approach" data-nav="approach"><span class="ss-label">Approach</span></a>
+  <a href="#products" data-nav="products"><span class="ss-label">Products</span></a>
+  <a href="#applications" data-nav="applications"><span class="ss-label">Applications</span></a>
+  <a href="#industries" data-nav="industries"><span class="ss-label">Industries</span></a>
+  <a href="#compare" data-nav="compare"><span class="ss-label">Compare</span></a>
+  <a href="#enquiry" data-nav="enquiry"><span class="ss-label">Enquiry</span></a>
+  <a href="#faq" data-nav="faq"><span class="ss-label">FAQ</span></a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home" style="border-bottom:none; padding-top:64px;">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Engineered Chemical Solutions</div>
+      <h1>Chemistry designed<br>around <em>manufacturing.</em></h1>
+      <p class="lede">Specialized flux, cleaning and dross-management chemistry for PCB, PCBA, SMT and electronics assembly — built around your process, not the other way round.</p>
+      <div class="hero-actions">
+        <a href="#finder" class="btn btn-copper">Find the Right Solution</a>
+        <a href="#products" class="btn btn-ghost">View Products</a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">HALIDE-FREE FLUXES</span>
+        <span class="tag">PCB / PCBA CLEANING</span>
+        <span class="tag">DROSS RECOVERY</span>
+      </div>
+    </div>
+
+    <div class="schematic">
+      <div class="schematic-top">
+        <span class="label">Solder Joint — Process State</span>
+        <span class="value" id="schemValue">No-Clean Flux</span>
+      </div>
+      <div class="schem-svg-holder">
+        <svg viewBox="0 0 400 220" width="100%" id="heroSvg">
+          <rect x="20" y="150" width="360" height="18" fill="#2b3441"/>
+          <rect x="20" y="150" width="360" height="4" fill="#2b3441"/>
+          <rect x="150" y="140" width="100" height="10" fill="#8c5a24" id="pad"/>
+          <path d="M170 60 L170 130 L230 130 L230 60" stroke="#5b6572" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path class="fillet" id="fillet" d="M150 148 Q170 118 175 130 L225 130 Q230 118 250 148 Z" fill="#8a94a0"/>
+          <path class="flow-line" d="M60 148 H140" stroke="#0f8a75" stroke-width="2" fill="none" opacity=".9"/>
+          <path class="flow-line" d="M260 148 H340" stroke="#0f8a75" stroke-width="2" fill="none" opacity=".9"/>
+          <ellipse class="wet-sweep" cx="200" cy="140" rx="26" ry="8" fill="#c1691f" opacity="0"/>
+          <text x="30" y="185" fill="#5c6b7a" font-family="IBM Plex Mono" font-size="9">PCB SUBSTRATE</text>
+          <text x="300" y="185" fill="#5c6b7a" font-family="IBM Plex Mono" font-size="9" text-anchor="end">Cu PAD</text>
+        </svg>
+      </div>
+      <div class="hero-toggle">
+        <button class="htbtn active" data-state="flux"><strong>KF-900 TU</strong>No-clean wetting</button>
+        <button class="htbtn" data-state="clean"><strong>KC(ABC)-101</strong>Residue removal</button>
+        <button class="htbtn" data-state="dross"><strong>KC-DRP 009</strong>Dross reduction</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO WE ARE ================= -->
+<section id="who">
+  <div class="wrap intro-grid">
+    <div class="reveal">
+      <div class="eyebrow">Who We Are</div>
+      <h2 class="lede" style="font-family:'Big Shoulders Display'; text-transform:uppercase; font-size:clamp(26px,3.4vw,36px); font-weight:800;">A chemical solution should work inside your process, not just your product spec.</h2>
+      <p style="color:var(--ink-dim); margin-top:18px; font-size:15px;">Kaarunya Flux Chemicals, an E-Solutions associate, is a startup established on 21 August 2026 in Chennai by a group of engineering graduates with deep expertise and vast experience in electronics manufacturing. Our manufacturing unit is located at 100/6B2B, GNT Road, Verkadu, Gummidipoondi, Thiruvallur District, Tamil Nadu – 601201. Our primary aim is to supply high-quality assembly materials to solar and EMS companies — presently liquid chemicals such as soldering fluxes, industrial collets and cleaners.</p>
+      <p style="color:var(--ink-dim); margin-top:14px; font-size:15px;">The company is classified as non-government and is registered with the Registrar of Companies, Tamil Nadu, India, with an authorised and paid-up share capital of ₹10,00,000. We aspire to serve chemical products manufacturing activities across India, currently supplying major sectors including automotive, aerospace, defence, communication, mobiles, electrical, radiators, solar, electronics and EMS. Our Technical Services department is led by a highly experienced team of experts, and capitalizing on the "Make in India" initiative, we play a significant role in providing top-quality solutions to the country's electronics sector. Our manufacturing units are designed with sophisticated, modern testing facilities that satisfy global standards.</p>
+
+      <div class="about-fact-grid">
+        <div class="about-fact"><div class="af-label">Established</div><div class="af-value">21 August 2026, Chennai</div></div>
+        <div class="about-fact"><div class="af-label">Manufacturing Unit</div><div class="af-value">100/6B2B, GNT Road, Verkadu, Gummidipoondi, Thiruvallur Dist, Tamil Nadu – 601201</div></div>
+        <div class="about-fact"><div class="af-label">Registration</div><div class="af-value">Registrar of Companies, Tamil Nadu, India (Non-Government)</div></div>
+        <div class="about-fact"><div class="af-label">Share Capital</div><div class="af-value">Authorised &amp; Paid-Up: ₹10,00,000</div></div>
+      </div>
+
+      <div class="sector-chip-row">
+        <span class="tag">AUTOMOTIVE</span>
+        <span class="tag">AEROSPACE</span>
+        <span class="tag">DEFENCE</span>
+        <span class="tag">COMMUNICATION</span>
+        <span class="tag">MOBILES</span>
+        <span class="tag">ELECTRICAL</span>
+        <span class="tag">RADIATORS</span>
+        <span class="tag">SOLAR</span>
+        <span class="tag">ELECTRONICS</span>
+        <span class="tag">EMS</span>
+      </div>
+
+      <div style="margin-top:24px;">
+        <!-- <img src="https://placehold.co/600x300/2b3441/white?text=Kaarunya+Team+%7C+Lab+%26+Manufacturing" alt="Kaarunya team in lab and manufacturing" style="width:100%; border-radius:6px; border:1px solid var(--line);"> -->
+      </div>
+    </div>
+    <div class="reveal">
+      <ul class="req-list">
+        <li>Reliable soldering performance</li>
+        <li>Effective residue removal</li>
+        <li>PCB &amp; PCBA cleanliness</li>
+        <li>Process efficiency</li>
+        <li>Reduced material wastage</li>
+        <li>Ease of application</li>
+        <li>Manufacturing consistency</li>
+        <li>Operator convenience</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPROACH ================= -->
+<section id="approach">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Our Approach</div>
+      <h2>From manufacturing challenge to chemical solution</h2>
+      <p class="lede">Every process has different requirements — so instead of treating every application the same, we work through it in five stages.</p>
+    </div>
+    <div class="approach-list">
+      <div class="approach-item reveal-step"><div class="approach-num">01</div><div class="approach-body"><h3>Understand</h3><p>Understand the customer's manufacturing process, materials and application requirements.</p></div></div>
+      <div class="approach-item reveal-step"><div class="approach-num">02</div><div class="approach-body"><h3>Identify</h3><p>Identify the chemical solution and product category suitable for the application.</p></div></div>
+      <div class="approach-item reveal-step"><div class="approach-num">03</div><div class="approach-body"><h3>Evaluate</h3><p>Consider process conditions such as soldering method, cleaning method, surface type and operating environment.</p></div></div>
+      <div class="approach-item reveal-step"><div class="approach-num">04</div><div class="approach-body"><h3>Optimize</h3><p>Help customers identify opportunities to improve process efficiency, cleanliness and reliability.</p></div></div>
+      <div class="approach-item reveal-step"><div class="approach-num">05</div><div class="approach-body"><h3>Support</h3><p>Maintain an ongoing, customer-focused approach for product selection and application requirements.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINDER ================= -->
+<section id="finder">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Find The Right Solution</div>
+      <h2>What is your manufacturing requirement?</h2>
+    </div>
+    <div class="finder-panel reveal">
+      <p class="finder-q">Choose the requirement closest to your process — we'll jump to the relevant product.</p>
+      <div class="finder-chips" id="finderChips">
+        <button class="chip" data-target="flux">Soldering</button>
+        <button class="chip" data-target="pcb">PCB Cleaning</button>
+        <button class="chip" data-target="solvent">Conformal Coating Cleaning</button>
+        <button class="chip" data-target="water">Water-Based Cleaning</button>
+        <button class="chip" data-target="ipa">IPA Cleaning</button>
+        <button class="chip" data-target="dross">Solder Dross</button>
+        <button class="chip" data-target="enquiry-other">Other Requirement</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section id="products">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Product Portfolio</div>
+      <h2>Complete chemistry for electronics manufacturing</h2>
+      <p class="lede">Fluxes, high-purity solvents, water-based and IPA cleaners, and dross-management chemistry — organized by the manufacturing requirement they solve.</p>
+    </div>
+
+    <div class="filter-row" id="filterRow">
+      <button class="filter-btn active" data-filter="all">ALL</button>
+      <button class="filter-btn" data-filter="flux">FLUX</button>
+      <button class="filter-btn" data-filter="pcb">PCB CLEANER</button>
+      <button class="filter-btn" data-filter="solvent">CONFORMAL COATING</button>
+      <button class="filter-btn" data-filter="water">WATER-BASED</button>
+      <button class="filter-btn" data-filter="ipa">IPA</button>
+      <button class="filter-btn" data-filter="dross">DROSS REDUCER</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <div class="p-card" data-cat="flux" id="card-flux1">
+        <img src="images/KF - 900TU.jpeg" alt="KF-900 TU product" class="p-img" loading="lazy">
+        <span class="p-cat">No-Clean Flux</span>
+        <h3 class="p-name">KF-900 TU</h3>
+        <p class="p-desc">Halide/Halogen-Free, Rosin/Resin-Free, low-solids no-clean flux for wave and selective soldering.</p>
+        <div class="p-foot"><span class="p-code">KFC-900-TU</span><span class="tag">Wave / Selective</span></div>
+      </div>
+      <div class="p-card" data-cat="flux" id="card-flux2">
+        <img src="images/KF 905 NC.jpeg" alt="KF-904 NC product" class="p-img" loading="lazy">
+        <span class="p-cat">No-Clean Flux</span>
+        <h3 class="p-name">KF-904 NC</h3>
+        <p class="p-desc">Halide-free no-clean flux engineered for reliable soldering performance and clean board cosmetics.</p>
+        <div class="p-foot"><span class="p-code">KFC-904-NC</span><span class="tag">Wave / Selective</span></div>
+      </div>
+      <div class="p-card" data-cat="flux" id="card-flux3">
+        <img src="images/KF - 701NC.jpeg" alt="KF-701 NC product" class="p-img" loading="lazy">
+        <span class="p-cat">No-Clean Flux</span>
+        <h3 class="p-name">KF-701 NC</h3>
+        <p class="p-desc">Halide-free no-clean flux with fine wetting properties, suited to mixed-technology assembly.</p>
+        <div class="p-foot"><span class="p-code">KFC-701-NC</span><span class="tag">Fine Wetting</span></div>
+      </div>
+      <div class="p-card" data-cat="pcb solvent" id="card-ps1002">
+        <img src="images/KC - 1000H.jpeg" alt="PS 1002 solvent cleaner" class="p-img" loading="lazy">
+        <span class="p-cat">Solvent Cleaner</span>
+        <h3 class="p-name">PS 1002</h3>
+        <p class="p-desc">High-purity solvent cleaner using glycol ethers, petroleum distillates and natural terpenes — built for polymer, urethane and cured/non-cured coating removal.</p>
+        <div class="p-foot"><span class="p-code">KFC-PS-1002</span><span class="tag">Conformal Coating</span></div>
+      </div>
+      <div class="p-card" data-cat="pcb" id="card-1003t">
+        <img src="images/KC - 1000H.jpeg" alt="KC-100H aromatic cleaner" class="p-img" loading="lazy">
+        <span class="p-cat">Aromatic Cleaner</span>
+        <h3 class="p-name">KC-100H</h3>
+        <p class="p-desc">High-purity orange-aroma cleaner for PCB/PCBA cleaning — a lead-free, higher flash-point alternative to hand-wipe mineral-spirit methods.</p>
+        <div class="p-foot"><span class="p-code">KFC-100H</span><span class="tag">Orange Aroma</span></div>
+      </div>
+      <div class="p-card" data-cat="water" id="card-wbc003">
+        <img src="images/KC (ABC) -101.jpeg" alt="KC(ABC)-101 water-based cleaner" class="p-img" loading="lazy">
+        <span class="p-cat">Water-Based Cleaner</span>
+        <h3 class="p-name">KC(ABC)-101</h3>
+        <p class="p-desc">Concentrated, halogen/halide-free water-based cleaner for No-Clean and water-soluble flux residues. Suits manual, ultrasonic and conveyorized cleaning.</p>
+        <div class="p-foot"><span class="p-code">KFC-ABC-101</span><span class="tag">1:4–1:7 dilution</span></div>
+      </div>
+      <div class="p-card" data-cat="ipa" id="card-ipaofg">
+        <img src="images/IPA.jpeg" alt="IPA EC cleaner" class="p-img" loading="lazy">
+        <span class="p-cat">IPA Cleaner</span>
+        <h3 class="p-name">IPA EC</h3>
+        <p class="p-desc">High-purity isopropyl alcohol cleaner with orange aroma, for post-soldering residue and general electronics contaminant removal.</p>
+        <div class="p-foot"><span class="p-code">KFC-IPA-EC</span><span class="tag">Orange Aroma</span></div>
+      </div>
+      <div class="p-card" data-cat="dross" id="card-drp009">
+        <img src="images/KC - DRP 009.jpeg" alt="KC-DRP 009 dross reducer" class="p-img" loading="lazy">
+        <span class="p-cat">Dross Reducer</span>
+        <h3 class="p-name">KC-DRP 009</h3>
+        <p class="p-desc">Crystalline powder that chemically reduces dross on the solder bath, releasing usable solder back into the bath — up to ~80% recoverable under applicable conditions.</p>
+        <div class="p-foot"><span class="p-code">KFC-DRP-009</span><span class="tag">Up to 280°C</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPLICATIONS PROCESS ================= -->
+<section id="applications" class="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Manufacturing Applications</div>
+      <h2>Where our chemistry fits your line</h2>
+      <p class="lede">Scroll through the line — each stage lights up as our chemistry enters the process.</p>
+    </div>
+    <div style="margin-bottom:24px;">
+      <img src="https://placehold.co/1200x300/2b3441/white?text=Electronics+Assembly+Line+%7C+SMT+%2B+Wave+%2B+Cleaning" alt="Electronics assembly line overview" style="width:100%; border-radius:6px; border:1px solid var(--line);">
+    </div>
+    <div class="process-track" id="processTrack">
+      <div class="process-line-bg"></div>
+      <div class="process-line-fg" id="processFg"></div>
+      <div class="p-step" data-step="0"><div class="p-dot"></div><h4>Component Prep</h4><p>Materials and components staged ahead of soldering.</p></div>
+      <div class="p-step" data-step="1"><div class="p-dot"></div><h4>Soldering</h4><p>Flux solutions support wetting across wave, selective and rework processes.</p></div>
+      <div class="p-step" data-step="2"><div class="p-dot"></div><h4>Assembly</h4><p>Through-hole, mixed-technology and surface-mount assembly.</p></div>
+      <div class="p-step" data-step="3"><div class="p-dot"></div><h4>Cleaning</h4><p>Solvent, water-based and IPA chemistry removes residue and contaminants.</p></div>
+      <div class="p-step" data-step="4"><div class="p-dot"></div><h4>Inspection</h4><p>Clean assemblies are prepared for inspection and testing.</p></div>
+      <div class="p-step" data-step="5"><div class="p-dot"></div><h4>Protection</h4><p>Cleaning and coating-related chemistry supports electronics protection.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INDUSTRIES ================= -->
+<section id="industries" style="padding-bottom:0;">
+  <div class="wrap" style="padding-bottom:96px;">
+    <div class="section-head reveal">
+      <div class="eyebrow">Industries We Serve</div>
+      <h2>Solutions across manufacturing sectors</h2>
+    </div>
+  </div>
+  <div class="industry-grid reveal">
+    <div class="industry-cell"><div class="ic-num">01</div><h4>Electronics Manufacturing</h4><p>Chemistry supporting electronic assembly, soldering and cleaning operations.</p></div>
+    <div class="industry-cell"><div class="ic-num">02</div><h4>PCB / PCBA</h4><p>Products supporting printed circuit board assembly and post-soldering cleaning.</p></div>
+    <div class="industry-cell"><div class="ic-num">03</div><h4>EMS</h4><p>Chemical consumables suited to electronics manufacturing service environments.</p></div>
+    <div class="industry-cell"><div class="ic-num">04</div><h4>SMT</h4><p>Solutions supporting surface-mount manufacturing processes.</p></div>
+    <div class="industry-cell"><div class="ic-num">05</div><h4>Semiconductor</h4><p>Chemistry for selected semiconductor assembly applications.</p></div>
+    <div class="industry-cell"><div class="ic-num">06</div><h4>Solar</h4><p>Support for soldering and manufacturing processes in solar applications.</p></div>
+    <div class="industry-cell"><div class="ic-num">07</div><h4>Automotive Electronics</h4><p>Chemistry supporting electronic assemblies used in automotive applications.</p></div>
+    <div class="industry-cell"><div class="ic-num">08</div><h4>Home Appliances</h4><p>Solutions supporting electronics used in consumer appliances.</p></div>
+  </div>
+</section>
+
+<!-- ================= COMPARISON ================= -->
+<section id="compare">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Product Comparison</div>
+      <h2>Compare at a glance</h2>
+      <p class="lede">Click a column heading to sort. This is an orientation view — always confirm against product-specific technical documentation.</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table id="compareTable">
+        <thead>
+          <tr>
+            <th data-key="product">Product <span class="arrow">↕</span></th>
+            <th data-key="category">Category <span class="arrow">↕</span></th>
+            <th data-key="app">Primary Application</th>
+            <th data-key="char">Key Characteristic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>KF-900 TU</td><td>No-Clean Flux</td><td>Wave / Selective Soldering</td><td>Halide/Halogen-Free, Low Solids</td></tr>
+          <tr><td>KF-904 NC</td><td>No-Clean Flux</td><td>Wave / Selective Soldering</td><td>Halide-Free</td></tr>
+          <tr><td>KF-701 NC</td><td>No-Clean Flux</td><td>Wave / Selective Soldering</td><td>Fine Wetting</td></tr>
+          <tr><td>PS 1002</td><td>Solvent Cleaner</td><td>PCB / PCBA Cleaning</td><td>High-Purity Solvent</td></tr>
+          <tr><td>KC-100H</td><td>Aromatic Cleaner</td><td>PCB Cleaning</td><td>Orange Aroma</td></tr>
+          <tr><td>KC(ABC)-101</td><td>Water-Based Cleaner</td><td>PCB / PCBA Cleaning</td><td>Concentrated Water-Based</td></tr>
+          <tr><td>IPA EC</td><td>IPA Cleaner</td><td>Electronics Cleaning</td><td>Orange Aroma</td></tr>
+          <tr><td>KC-DRP 009</td><td>Dross Reducer</td><td>Solder Bath</td><td>Dross Reduction</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY / QUALITY ================= -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why Kaarunya Flux Chemicals</div>
+      <h2>More than a product supplier</h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-cell"><h4>Application-Focused</h4><p>We focus on understanding the application behind the chemical requirement.</p></div>
+      <div class="why-cell"><h4>Industry-Oriented</h4><p>Solutions designed around electronics and industrial manufacturing requirements.</p></div>
+      <div class="why-cell"><h4>Diverse Portfolio</h4><p>Fluxes, cleaners, solvents, IPA solutions, water-based cleaners and dross reducers.</p></div>
+      <div class="why-cell"><h4>Process Support</h4><p>Solutions covering multiple stages of electronics manufacturing.</p></div>
+      <div class="why-cell"><h4>Customer-Centric</h4><p>Focused on understanding requirements and building long-term relationships.</p></div>
+      <div class="why-cell"><h4>Continuous Improvement</h4><p>Committed to improving products, processes and customer value.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENQUIRY FORM ================= -->
+<section id="enquiry">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Send us your enquiry</h2>
+      <p class="lede">Fill in your details and we'll get back to you within 1–2 business days. Or reach out directly on WhatsApp.</p>
+    </div>
+
+    <div class="enquiry-shell reveal">
+      <div class="enquiry-body">
+        <form id="enquiryForm">
+          <div class="field-grid">
+            <div class="field">
+              <label for="f-name">Full Name <span style="color:var(--copper);">*</span></label>
+              <input id="f-name" required placeholder="e.g. Arjun Rao">
+            </div>
+            <div class="field">
+              <label for="f-company">Company Name <span style="color:var(--ink-faint);">(optional)</span></label>
+              <input id="f-company" placeholder="e.g. Precision EMS Pvt Ltd">
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span style="color:var(--copper);">*</span></label>
+              <input id="f-email" type="email" required placeholder="you@company.com">
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone Number <span style="color:var(--copper);">*</span></label>
+              <input id="f-phone" type="tel" required placeholder="+91 98765 43210">
+            </div>
+            <div class="field" style="grid-column: 1 / -1;">
+              <label for="f-message">Your Message <span style="color:var(--copper);">*</span></label>
+              <textarea id="f-message" rows="4" required placeholder="Tell us about your requirement, manufacturing process, or the product you're interested in..."></textarea>
+            </div>
+          </div>
+
+          <!-- Product buttons that trigger WhatsApp -->
+          <div style="margin: 12px 0 8px;">
+            <p style="font-size:13px; color:var(--ink-dim); margin-bottom:12px;">Or enquire about a specific product via WhatsApp:</p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button type="button" class="btn btn-copper btn-sm" data-product="KF-900 TU">KF-900 TU</button>
+              <button type="button" class="btn btn-copper btn-sm" data-product="KF-904 NC">KF-904 NC</button>
+              <button type="button" class="btn btn-copper btn-sm" data-product="KF-701 NC">KF-701 NC</button>
+              <button type="button" class="btn btn-copper btn-sm" data-product="PS 1002">PS 1002</button>
+              <button type="button" class="btn btn-copper btn-sm" data-product="KC-100H">KC-100H</button>
+              <button type="button" class="btn btn-copper btn-sm" data-product="KC(ABC)-101">KC(ABC)-101</button>
+              <button type="button" class="btn btn-copper btn-sm" data-product="IPA EC">IPA EC</button>
+              <button type="button" class="btn btn-copper btn-sm" data-product="KC-DRP 009">KC-DRP 009</button>
+            </div>
+          </div>
+
+          <div class="ef-nav" style="margin-top:20px;">
+            <div></div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <button type="button" class="btn btn-ghost" id="waEnquiry" style="border-color: #25D366; color: #075e54;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                Send via WhatsApp
+              </button>
+              <button type="submit" class="btn btn-copper">Submit Enquiry</button>
+            </div>
+          </div>
+          <p class="req-note" id="formNote"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">FAQ</div>
+      <h2>Common questions</h2>
+    </div>
+    <div id="faqList" style="max-width:820px;">
+      <div class="faq-item">
+        <button class="faq-q">What industries are your products intended for?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Our portfolio is primarily focused on electronics and industrial manufacturing applications, including PCB/PCBA, SMT, EMS, semiconductor, solar, automotive electronics and home appliances.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What types of soldering fluxes do you offer?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Our range includes No-Clean flux solutions: KF-900 TU, KF-904 NC and KF-701 NC.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you offer PCB cleaning solutions?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes — high-purity solvent cleaners, aromatic cleaners, water-based cleaners and IPA-based cleaning solutions.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you provide water-based cleaning solutions?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes. KC(ABC)-101 is a halogen-free and halide-free concentrated water-based cleaner designed for PCB and PCBA cleaning.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you provide solutions for solder dross?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes. KC-DRP 009 is designed for solder dross reduction and solder recovery applications.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Are your fluxes No-Clean products?<span class="plus">+</span></button>
+        <div class="faq-a"><p>The listed flux products are No-Clean flux solutions. Consult product-specific technical documentation for exact process requirements.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can your products be used for lead-free soldering?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Several products in the portfolio are designed for Pb-Free applications. Always confirm suitability against the specific product's technical documentation and process conditions.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I request a product sample?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Contact our team to discuss product evaluation options.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How can I select the right product?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Share your manufacturing process, materials, equipment, current chemical and specific requirement through the technical enquiry form above.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESOURCES ================= -->
+<section id="resources">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Resources</div>
+      <h2>Documentation &amp; guidance</h2>
+    </div>
+    <div class="res-grid reveal">
+      <div class="res-card"><div class="r-ic">PDF</div><h4>Product Catalogue</h4><p>Full portfolio overview</p></div>
+      <div class="res-card"><div class="r-ic">TDS</div><h4>Technical Data Sheets</h4><p>Product-specific detail</p></div>
+      <div class="res-card"><div class="r-ic">SDS</div><h4>Safety Data Sheets</h4><p>Safety &amp; handling info</p></div>
+      <div class="res-card"><div class="r-ic">GUIDE</div><h4>Application Guides</h4><p>Selected manufacturing uses</p></div>
+      <div class="res-card"><div class="r-ic">FAQ</div><h4>FAQ</h4><p>Common questions</p></div>
+    </div>
+    <p style="font-size:12.5px; color:var(--ink-faint); margin-top:18px;">Downloadable documents will be added once available.</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT CTA ================= -->
+<section style="border-bottom:none;">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>Have a manufacturing challenge? Let's find the right chemistry.</h2>
+      <div class="cta-actions">
+        <a href="#enquiry" class="btn btn-copper">Submit Your Requirement</a>
+        <a href="#products" class="btn btn-ghost">Explore Products</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER WITH LOGO AND GSTIN ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <img src="images/logo.png" alt="Kaarunya Flux Chemicals Logo" style="height:36px; width:auto; flex:none;">
+          Kaarunya Flux
+        </div>
+        <p>Innovative chemical solutions for modern manufacturing. Innovate. Optimize. Manufacture better.</p>
+        <p style="font-size:12px; color:var(--ink-faint); margin-top:10px;">
+          <span class="gstin-badge">GSTIN: 33BMMPM7094M1ZB</span>
+        </p>
+      </div>
+      <div class="foot-col"><h5>Products</h5><ul><li>Soldering Fluxes</li><li>PCB Cleaners</li><li>Solvent Cleaners</li><li>Water-Based Cleaners</li><li>IPA Cleaners</li><li>Dross Reducers</li></ul></div>
+      <div class="foot-col"><h5>Industries</h5><ul><li>Electronics</li><li>PCB / PCBA</li><li>EMS</li><li>SMT</li><li>Semiconductor</li><li>Solar</li></ul></div>
+      <div class="foot-col"><h5>Company</h5><ul><li>About Us</li><li>Quality</li><li>Sustainability</li><li>Contact</li></ul></div>
+      <div class="foot-col contact"><h5>Contact</h5><ul><li>Address: 100/6B2B, GNT Road, Verkadu, Gummidipoondi, Thiruvallur Dist, Tamil Nadu – 601201</li><li></li><li>Email: Kaarunyafluxchemicals@gmail.com</li></ul></div>
+    </div>Phone:+91 9500044921
+
+    <div class="foot-bottom">
+      <span>© 2026 Kaarunya Flux Chemicals. All rights reserved.</span>
+      <span>Precision Chemistry · Process Performance · Customer-Focused Solutions</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Mobile menu — proper toggle with aria state, closes on link click
+  var menuToggle = document.getElementById('menuToggle');
+  var mobilePanel = document.getElementById('mobilePanel');
+  function setMenu(open){
+    menuToggle.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobilePanel.style.maxHeight = open ? mobilePanel.scrollHeight + 'px' : '0px';
+  }
+  menuToggle.addEventListener('click', function(){
+    setMenu(!menuToggle.classList.contains('open'));
+  });
+  mobilePanel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setMenu(false); });
+  });
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 900) setMenu(false);
+  });
+
+  // Self-navigation (scrollspy): header nav, mobile panel and side rail all
+  // stay in sync with whichever section is currently in view.
+  var navTargets = ['home','who','approach','products','applications','industries','compare','enquiry','faq'];
+  var navSections = navTargets.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  var navLinkGroups = [
+    document.querySelectorAll('#navLinks a[data-nav]'),
+    document.querySelectorAll('#mobilePanel a[data-nav]'),
+    document.querySelectorAll('#scrollspy a[data-nav]')
+  ];
+  function setActiveNav(id){
+    navLinkGroups.forEach(function(group){
+      group.forEach(function(a){ a.classList.toggle('active', a.dataset.nav === id); });
+    });
+  }
+  var navIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ setActiveNav(e.target.id); }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+  navSections.forEach(function(s){ navIo.observe(s); });
+
+  // Reveal on scroll
+  var revealEls = document.querySelectorAll('.reveal, .approach-item');
+  revealEls.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+      }
+    });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal, .approach-item').forEach(function(el){
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+
+  // Hero interactive schematic
+  var heroStates = {
+    flux: {label:'No-Clean Flux', pad:'#8c5a24', fillet:'#8a94a0', flow:1, sweep:1, cyan:false},
+    clean:{label:'Cleaning — KC(ABC)-101', pad:'#6a7f8c', fillet:'#aeb7c0', flow:1, sweep:0, cyan:true},
+    dross:{label:'Dross Reduction — KC-DRP 009', pad:'#8c5a24', fillet:'#c3cad1', flow:0, sweep:0, cyan:false}
+  };
+  var htBtns = document.querySelectorAll('.htbtn');
+  var schemValue = document.getElementById('schemValue');
+  var pad = document.getElementById('pad');
+  var fillet = document.getElementById('fillet');
+  var flows = document.querySelectorAll('#heroSvg .flow-line');
+  var sweep = document.querySelector('#heroSvg .wet-sweep');
+  htBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      htBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var s = heroStates[btn.dataset.state];
+      schemValue.textContent = s.label;
+      pad.setAttribute('fill', s.pad);
+      fillet.setAttribute('fill', s.fillet);
+      flows.forEach(function(f){ f.style.opacity = s.flow ? .8 : .12; });
+      sweep.style.opacity = s.sweep ? 1 : 0;
+      sweep.style.animationPlayState = s.sweep ? 'running' : 'paused';
+    });
+  });
+
+  // Product finder chips -> filter + scroll
+  var chipMap = {
+    flux:'flux', pcb:'pcb', solvent:'solvent', water:'water', ipa:'ipa', dross:'dross'
+  };
+  document.querySelectorAll('#finderChips .chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var target = chip.dataset.target;
+      if(target === 'enquiry-other'){
+        document.getElementById('enquiry').scrollIntoView({behavior:'smooth'});
+        return;
+      }
+      applyFilter(target);
+      document.getElementById('products').scrollIntoView({behavior:'smooth'});
+      setTimeout(function(){
+        var card = document.querySelector('.p-card[data-cat~="'+target+'"]');
+        if(card){
+          card.classList.add('flash');
+          setTimeout(function(){ card.classList.remove('flash'); }, 1600);
+        }
+      }, 500);
+    });
+  });
+
+  // Filter row
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.p-card');
+  function applyFilter(key){
+    filterBtns.forEach(function(b){ b.classList.toggle('active', b.dataset.filter === key); });
+    cards.forEach(function(c){
+      var cats = c.dataset.cat.split(' ');
+      c.classList.toggle('hidden', key !== 'all' && cats.indexOf(key) === -1);
+    });
+  }
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){ applyFilter(btn.dataset.filter); });
+  });
+
+  // Applications process — scroll-linked
+  var steps = document.querySelectorAll('.p-step');
+  var fg = document.getElementById('processFg');
+  var vertical = window.matchMedia('(max-width:900px)');
+  var stepIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('active'); }
+    });
+    var activeCount = document.querySelectorAll('.p-step.active').length;
+    var pct = (activeCount / steps.length) * 100;
+    if(vertical.matches){ fg.style.height = pct + '%'; fg.style.width='2px'; }
+    else { fg.style.width = pct + '%'; }
+  }, {threshold:.6});
+  steps.forEach(function(s){ stepIo.observe(s); });
+
+  // Comparison table sort
+  var table = document.getElementById('compareTable');
+  var tbody = table.querySelector('tbody');
+  var sortState = {};
+  table.querySelectorAll('thead th[data-key]').forEach(function(th, idx){
+    th.addEventListener('click', function(){
+      var key = th.dataset.key;
+      var rows = Array.from(tbody.querySelectorAll('tr'));
+      var col = Array.from(th.parentNode.children).indexOf(th);
+      var dir = sortState[key] === 'asc' ? 'desc' : 'asc';
+      sortState = {}; sortState[key] = dir;
+      rows.sort(function(a,b){
+        var av = a.children[col].textContent.trim().toLowerCase();
+        var bv = b.children[col].textContent.trim().toLowerCase();
+        return dir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+      });
+      rows.forEach(function(r){ tbody.appendChild(r); });
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+      a.style.maxHeight = !isOpen ? a.scrollHeight + 'px' : 0;
+    });
+  });
+
+})();
+
+// ========== ENQUIRY FORM - WHATSAPP REDIRECT ==========
+(function() {
+  var WA_NUMBER = '919500044921'; // Change this to your WhatsApp number with country code
+
+  var form = document.getElementById('enquiryForm');
+  var nameField = document.getElementById('f-name');
+  var companyField = document.getElementById('f-company');
+  var emailField = document.getElementById('f-email');
+  var phoneField = document.getElementById('f-phone');
+  var messageField = document.getElementById('f-message');
+  var note = document.getElementById('formNote');
+
+  // --- WhatsApp product buttons ---
+  var waButtons = document.querySelectorAll('[data-product]');
+  waButtons.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var product = btn.dataset.product;
+      
+      // Pre-fill message with product name
+      var msg = "Hi Kaarunya Flux Chemicals,%0A%0AI'm interested in: *" + product + "*%0A%0A";
+      
+      // Add user details if filled
+      var name = nameField.value.trim();
+      var company = companyField.value.trim();
+      var email = emailField.value.trim();
+      var phone = phoneField.value.trim();
+      
+      if (name) msg += "Name: " + name + "%0A";
+      if (company) msg += "Company: " + company + "%0A";
+      if (email) msg += "Email: " + email + "%0A";
+      if (phone) msg += "Phone: " + phone + "%0A";
+      
+      var customMsg = messageField.value.trim();
+      if (customMsg) msg += "%0A%0A" + customMsg;
+      
+      // Open WhatsApp
+      var waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + msg;
+      window.open(waUrl, '_blank');
+      
+      note.textContent = 'Opening WhatsApp...';
+      note.style.color = 'var(--cyan)';
+    });
+  });
+
+  // --- "Send via WhatsApp" button (uses all form fields) ---
+  var waEnquiryBtn = document.getElementById('waEnquiry');
+  if (waEnquiryBtn) {
+    waEnquiryBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      var name = nameField.value.trim();
+      var email = emailField.value.trim();
+      var phone = phoneField.value.trim();
+      var message = messageField.value.trim();
+      
+      if (!name || !email || !phone || !message) {
+        note.textContent = 'Please fill in Name, Email, Phone and Message before sending via WhatsApp.';
+        note.style.color = 'var(--copper)';
+        return;
+      }
+      
+      var company = companyField.value.trim();
+      
+      var msg = "Hi Kaarunya Flux Chemicals,%0A%0A";
+      msg += "Name: " + name + "%0A";
+      if (company) msg += "Company: " + company + "%0A";
+      msg += "Email: " + email + "%0A";
+      msg += "Phone: " + phone + "%0A";
+      msg += "%0A" + message;
+      
+      var waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + msg;
+      window.open(waUrl, '_blank');
+      note.textContent = 'Opening WhatsApp...';
+      note.style.color = 'var(--cyan)';
+    });
+  }
+
+  // --- Form submission - Redirects to WhatsApp ---
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var name = nameField.value.trim();
+    var email = emailField.value.trim();
+    var phone = phoneField.value.trim();
+    var message = messageField.value.trim();
+    
+    if (!name || !email || !phone || !message) {
+      note.textContent = 'Please fill in all required fields (Name, Email, Phone, Message).';
+      note.style.color = 'var(--copper)';
+      return;
+    }
+    
+    var company = companyField.value.trim();
+    
+    // Build WhatsApp message
+    var msg = "Hi Kaarunya Flux Chemicals,%0A%0A";
+    msg += "Name: " + name + "%0A";
+    if (company) msg += "Company: " + company + "%0A";
+    msg += "Email: " + email + "%0A";
+    msg += "Phone: " + phone + "%0A";
+    msg += "%0A" + message;
+    
+    // Redirect to WhatsApp
+    var waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + msg;
+    window.open(waUrl, '_blank');
+    
+    note.textContent = 'Thank you! Redirecting to WhatsApp...';
+    note.style.color = 'var(--cyan)';
+    
+    // Optionally reset the form after a delay
+    setTimeout(function() {
+      form.reset();
+    }, 3000);
+  });
+})();
+</script>
+</body>
+</html>
